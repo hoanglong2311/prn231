@@ -13,10 +13,9 @@ namespace StudentAPI.Controllers
         //Post: ProductsController/Products
         [HttpPost]
         [Route("save")]
-        public IActionResult SaveStudent(StudentModel p)
+        public int SaveStudent(StudentModel p)
         {
-            repository.SaveStudent(p);
-            return NoContent();
+            return repository.SaveStudent(p);
         }
     }
 }

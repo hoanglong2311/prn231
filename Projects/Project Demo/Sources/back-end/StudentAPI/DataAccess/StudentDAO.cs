@@ -11,7 +11,8 @@ namespace DataAccess
                 using (var context = new StudentDbContext())
                 {
                     context.Students.Add(student);
-                     return context.SaveChanges();
+                    var result = context.SaveChanges();
+                     return result;
                 }
             }
             catch (Exception e)
