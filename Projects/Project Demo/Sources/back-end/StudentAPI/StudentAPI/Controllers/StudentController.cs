@@ -1,20 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessObject;
+using Microsoft.AspNetCore.Mvc;
 using Repository;
 
 namespace StudentAPI.Controllers
 {
+    [Route("api/student")]
     public class StudentController : Controller
     {
         private IStudentRepository repository = new StudentRepository();
-        //Get: api/Products
-        [HttpGet]
-        public ActionResult<IEnumerable<Product>> GetProducts() => repository.GetProducts();
 
+        
         //Post: ProductsController/Products
         [HttpPost]
-        public IActionResult PostProduct(Product p)
+        [Route("save")]
+        public IActionResult SaveStudent(StudentModel p)
         {
-            repository.SaveProduct(p);
+            repository.SaveStudent(p);
             return NoContent();
         }
     }
