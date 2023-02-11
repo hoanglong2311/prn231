@@ -4,13 +4,17 @@ using Repository;
 
 namespace StudentAPI.Controllers
 {
+    [ApiController]
     [Route("api/student")]
     public class StudentController : Controller
     {
         private IStudentRepository repository = new StudentRepository();
 
-        
-        //Post: ProductsController/Products
+
+        /// <summary>
+        /// Create a document
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         [Route("save")]
         public int SaveStudent(StudentModel p)
