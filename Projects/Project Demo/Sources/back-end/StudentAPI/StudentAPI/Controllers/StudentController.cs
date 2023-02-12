@@ -10,6 +10,16 @@ namespace StudentAPI.Controllers
     {
         private IStudentRepository repository = new StudentRepository();
 
+        /// <summary>
+        /// Get list student
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("list")]
+        public IActionResult GetListStudent()
+        {
+            return Ok(repository.GetStudents());
+        }
 
         /// <summary>
         /// Create a document
@@ -47,5 +57,33 @@ namespace StudentAPI.Controllers
                 return BadRequest(e.Message);
             }
         }
+        
+        /// <summary>
+        /// Delete student
+        /// </summary>
+        /// <returns></returns>
+        [HttpDelete("id")]
+        public IActionResult DeleteStudent(int id)
+        {
+            try
+            {
+                var studentTmp = repository.GetStudentById(id);
+                if (studentTmp == null)
+                {
+                    return NotFound("Can not find student");
+                }
+                else
+                {
+                    repository.DeleteStudent(id);
+                    return Ok("Delete student successfully");
+                }
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+
     }
 }
