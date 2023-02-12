@@ -31,8 +31,8 @@ namespace StudentAPI.Controllers
         {
             try
             {
-                var studentTMP = repository.GetStudentById(student.ID);
-                if (studentTMP == null)
+                var studentTmp = repository.GetStudentById(student.ID);
+                if (studentTmp == null)
                 {
                     return NotFound("Can not find student");
                 }
