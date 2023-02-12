@@ -14,5 +14,20 @@ namespace Repository
         {
             return StudentDAO.SaveStudent(student);
         }
+
+        public List<StudentModel> GetStudents()
+        {
+            return StudentDAO.GetStudents();
+        }
+
+        public int UpdateStudent(StudentModel student)
+        {
+            return StudentDAO.UpdateStudent(student);
+        }
+
+        public int DeleteStudent(int id)
+        {
+            return StudentDAO.DeleteStudent(id);
+        }
     }
 }
