@@ -8,5 +8,6 @@ namespace Repository
         List<StudentModel> GetStudents();
         int UpdateStudent(StudentModel student);
         int DeleteStudent(int id);
+        StudentModel GetStudentById(int id);
     }
 }

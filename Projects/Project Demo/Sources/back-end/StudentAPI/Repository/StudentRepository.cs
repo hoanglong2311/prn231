@@ -29,5 +29,10 @@ namespace Repository
         {
             return StudentDAO.DeleteStudent(id);
         }
+
+        public StudentModel GetStudentById(int id)
+        {
+            return StudentDAO.GetStudentById(id);
+        }
     }
 }

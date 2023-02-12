@@ -21,5 +21,31 @@ namespace StudentAPI.Controllers
         {
             return repository.SaveStudent(p);
         }
+        
+        /// <summary>
+        /// update student
+        /// </summary>
+        /// <returns></returns>
+        [HttpPut("Update")]
+        public IActionResult UpdateStudent(StudentModel student)
+        {
+            try
+            {
+                var studentTMP = repository.GetStudentById(student.ID);
+                if (studentTMP == null)
+                {
+                    return NotFound("Can not find student");
+                }
+                else
+                {
+                    repository.UpdateStudent(student);
+                    return Ok("Update student successfully");
+                }
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }
