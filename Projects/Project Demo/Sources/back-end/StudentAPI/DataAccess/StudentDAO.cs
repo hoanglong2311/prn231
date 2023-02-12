@@ -35,7 +35,7 @@ namespace DataAccess
             catch (Exception e)
             {
                 throw new Exception(e.Message);
-            }4
+            }
         }
         
         public static int UpdateStudent(StudentModel student)
