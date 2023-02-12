@@ -21,6 +21,18 @@ namespace StudentAPI.Controllers
             return Ok(repository.GetStudents());
         }
 
+        
+        /// <summary>
+        /// Get student by id
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("id")]
+        public IActionResult GetStudentById(int id)
+        {
+            return Ok(repository.GetStudentById(id));
+        }
+
         /// <summary>
         /// Create a document
         /// </summary>
@@ -36,7 +48,7 @@ namespace StudentAPI.Controllers
         /// update student
         /// </summary>
         /// <returns></returns>
-        [HttpPut("Update")]
+        [HttpPut("update")]
         public IActionResult UpdateStudent(StudentModel student)
         {
             try
