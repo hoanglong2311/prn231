@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using BusinessObject;
 
 namespace BusinessObject
 {
@@ -10,8 +9,10 @@ namespace BusinessObject
         public StudentDbContext() { }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var builder = new ConfigurationBuilder().AddJsonFile("D:\\Study at FPTU\\Major 8\\PRN231\\PRN_DEMO_Present\\prn231\\Projects\\Project Demo\\Sources\\back-end\\StudentAPI\\StudentBusiness\\appsettings.json", optional: true, reloadOnChange: true);
-            IConfigurationRoot configuration = builder.Build();
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .AddJsonFile("config.json", optional: true, reloadOnChange: true)
+                .Build();
+            
             optionsBuilder.UseSqlServer(configuration.GetConnectionString("StudentDB"));
         }
         public virtual DbSet<StudentModel>? Students { get; set; }
