@@ -21,7 +21,6 @@ namespace StudentAPI.Controllers
             return Ok(repository.GetStudents());
         }
 
-        
         /// <summary>
         /// Get student by id
         /// </summary>
@@ -32,7 +31,7 @@ namespace StudentAPI.Controllers
         {
             return Ok(repository.GetStudentById(id));
         }
-
+        
         /// <summary>
         /// Create a document
         /// </summary>
