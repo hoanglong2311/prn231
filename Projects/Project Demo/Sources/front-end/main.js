@@ -28,6 +28,7 @@ function GetListStudent() {
         html += '</tr>';
       });
       $('#listStudent').html(html);
+      $('.hint-text').html('Showing <b>' + result.length + '</b> students');
     },
     error: function(result, status) {
       console.log(status,result);
