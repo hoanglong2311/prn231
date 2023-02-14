@@ -25,7 +25,7 @@ function GetListStudent() {
           '<i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>';
         html += "</a>";
         html +=
-          '<a href="#deleteStudentModal" class="delete" data-toggle="modal" onclick="deleteStudent(' +
+          '<a href="#deleteStudentModal" class="delete" data-toggle="modal" onclick="deleteStudentById(' +
           item.id +
           ')">';
         html +=
@@ -34,8 +34,8 @@ function GetListStudent() {
         html += "</td>";
         html += "</tr>";
       });
-      $('#listStudent').html(html);
-      $('.hint-text').html('Showing <b>' + result.length + '</b> students');
+      $("#listStudent").html(html);
+      $(".hint-text").html("Showing <b>" + result.length + "</b> students");
     },
     error: function (result, status) {
       console.log(status, result);
@@ -104,11 +104,10 @@ function addStudent() {
   });
 }
 
-
-function deleteStudentById() {
+window.deleteStudentById = function (id) {
   console.log("------- DELETE ----->");
   $.ajax({
-    url: DELETE_STUDENT_API_PATH,
+    url: "https://localhost:7190/api/student/id?id=" + id,
     type: "DELETE",
     contentType: "application/json",
     data: JSON.stringify({
@@ -119,13 +118,12 @@ function deleteStudentById() {
         GetAllStudents();
         $("#deleteStudentModal").modal("hide");
         // window.location.reload();
-        console.log('----- DELETED ------');
+        console.log("----- DELETED ------");
       }
     },
     error: function (result, status, xhr) {
-      console.log('----- Something Wrong! ------');
+      console.log("----- Something Wrong! ------");
       console.log(status, result);
     },
   });
-}
-
+};
