@@ -23,3 +23,29 @@ function addStudent() {
     },
   })
 }
+
+
+function deleteStudentById() {
+  console.log("------- DELETE ----->");
+  $.ajax({
+    url: DELETE_STUDENT_API_PATH,
+    type: "DELETE",
+    contentType: "application/json",
+    data: JSON.stringify({
+      id: $("#studentId").val(),
+    }),
+    success: function (result, status, xhr) {
+      if (result == 1) {
+        GetAllStudents();
+        $("#deleteStudentModal").modal("hide");
+        // window.location.reload();
+        console.log('----- DELETED ------');
+      }
+    },
+    error: function (result, status, xhr) {
+      console.log('----- Something Wrong! ------');
+      console.log(status, result);
+    },
+  });
+}
+
