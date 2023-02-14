@@ -22,6 +22,17 @@ namespace StudentAPI.Controllers
         }
 
         /// <summary>
+        /// Get student by id
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("id")]
+        public IActionResult GetStudentById(int id)
+        {
+            return Ok(repository.GetStudentById(id));
+        }
+        
+        /// <summary>
         /// Create a document
         /// </summary>
         /// <returns></returns>
